@@ -8,7 +8,8 @@ const App = () => {
 
   const passwordGenerator = useCallback(() => {
     // useCallback is a Hook in react that helps you memoize (cache)
-    //  a functionn so it doesn't get recreated on every render unless its dependencies change
+    //  a functionn so it doesn't get recreated on every render unless its
+    // dependencies change
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "1234567890";
