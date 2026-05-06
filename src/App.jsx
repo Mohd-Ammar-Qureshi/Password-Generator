@@ -8,13 +8,13 @@ const App = () => {
 
   const passwordGenerator = useCallback(() => {
     // useCallback is a Hook in react that helps you memoize (cache)
-    //  a function so it doesn't get recreated on every render unless its dependencies change
+    //  a functionn so it doesn't get recreated on every render unless its dependencies change
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "1234567890";
     if (charAllowed) str += "!?@&%?#$£_";
     for (let i = 1; i <= length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1);
+      let char = Math.floor(Math.random() * str.length);
       pass += str.charAt(char);
     }
     setPassword(pass);
@@ -59,7 +59,7 @@ const App = () => {
               value={length}
               className="cursor-pointer"
               onChange={(e) => {
-                setlength(e.target.value);
+                setlength(Number(e.target.value));
               }}
             />
             <label>length: {length}</label>
@@ -67,7 +67,7 @@ const App = () => {
           <div className="flex items-center gap-x-1">
             <input
               type="checkbox"
-              defaultChecked={numberAllowed}
+              checked={numberAllowed}
               id="NumberInput"
               onChange={() => {
                 setnumberAllowed((prev) => !prev);
@@ -78,7 +78,7 @@ const App = () => {
           <div className="flex items-center gap-x-1">
             <input
               type="checkbox"
-              defaultChecked={numberAllowed}
+              checked={charAllowed}
               id="CharacterInput"
               onChange={() => {
                 // prev this for callback fire
